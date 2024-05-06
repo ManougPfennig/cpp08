@@ -15,7 +15,7 @@ class Span {
 		size_t			_maxSize;
 
 	public:
-		// by default, Span will set _maxSize to 10
+		// by default, Span will set _maxSize to 100
 		Span( void );
 		Span( const size_t n );
 		Span( const Span &s );
@@ -25,7 +25,10 @@ class Span {
 		// will add value to _numbers list
 		void	addNumber( int value );
 		// will add all values (including start and end) to _numbers list
+		//- can be called with a third int as modulo (int start, int end, int modulo)
 		void	addNumberRange( int start, int end );
+		// will add all values divisible by modulo (including start and end) to _numbers list
+		void	addNumberRange( int start, int end, int modulo );
 		// will return the shortest possible span between two values in _numbers
 		size_t	shortestSpan( void ) const;
 		// will return the longest possible span between two values in _numbers

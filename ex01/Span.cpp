@@ -17,7 +17,7 @@ Span::Span( const Span &s ): _maxSize(s.getMaxSize()){
 Span	&Span::operator=( const Span &s ){
 
 	// empty current _num list
-	for (int i = 0; i < _num.size(); i++)
+	while (_num.size())
 		_num.pop_front();
 
 	// copies _maxSize and _num list from s
@@ -51,6 +51,29 @@ void	Span::addNumberRange( int start, int end ){
 		while (start >= end)
 		{
 			this->addNumber(start);
+			start--;
+		}
+	}
+	return ;
+}
+
+void	Span::addNumberRange( int start, int end, int modulo ){
+
+	if (start <= end)
+	{
+		while (start <= end)
+		{
+			if (start % modulo == 0)
+				this->addNumber(start);
+			start++;
+		}
+	}
+	else
+	{
+		while (start >= end)
+		{
+			if (start % modulo == 0)
+				this->addNumber(start);
 			start--;
 		}
 	}
